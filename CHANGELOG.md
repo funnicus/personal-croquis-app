@@ -4,9 +4,23 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🚀 Features
+
+- Automatic backups support
+
 ### 🐛 Bug Fixes
 
 - Selected tags saved to localstorage
+- "croqui" typo to croquis
+- "croqui" typo to croquis
+- Timer page layout regression
+
+### ⚙️ Miscellaneous Tasks
+
+- Update docs for backups, break README into wiki
+- Shared env from one source of truth
+- Remove duplicate app dockerfile
+- Update TODO
 
 ## [13.6.2026] - 2026-06-13
 
@@ -31,7 +45,7 @@ All notable changes to this project will be documented in this file.
 - Update node version, toggle image fullscreen with timer
 - Update README
 - Fix lint
-- Improve tag funcitonality, improve queries, persist croquis settings
+- Improve tag funcitonality, improve queries, persist croqui settings
 - Add frontend support for categories
 - Category ui refactor
 - Move audits last in checks
