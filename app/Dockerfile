@@ -1,20 +1,21 @@
 # Shared dependency layer (includes dev deps, e.g. kysely-ctl for migrations)
 FROM node:24-alpine AS deps
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci
+RUN corepack enable
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
 
 # Build the SvelteKit app, then prune to production dependencies
 FROM deps AS builder
 COPY . .
-RUN npm run build
-RUN npm prune --production
+RUN pnpm run build
+RUN pnpm prune --prod
 
 # One-shot database migration runner.
 # Keeps the full dependency set + migrations + kysely config so `kysely migrate up` can run.
 FROM deps AS migrator
 COPY . .
-CMD [ "npm", "run", "migrate:up" ]
+CMD [ "pnpm", "run", "migrate:up" ]
 
 # Final runtime image (must remain the last stage so the app service builds it by default)
 FROM node:24-alpine AS runner
