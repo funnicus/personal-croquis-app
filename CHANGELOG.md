@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### 🚀 Features
 
 - Automatic backups support
+- Add gallery tagger view, fix dockerfile
 
 ### 🐛 Bug Fixes
 
