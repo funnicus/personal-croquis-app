@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file.
 - Shared env from one source of truth
 - Remove duplicate app dockerfile
 - Update TODO
+- Update README
 
 ## [13.6.2026] - 2026-06-13
 
