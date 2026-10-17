@@ -125,7 +125,7 @@ const createMany = async (images: Array<{ name: string }>) =>
 	await db
 		.insertInto('image')
 		.values(images.map((image) => ({ name: image.name, status: 'uploaded' })))
-		.returning('id')
+		.returning(['id', 'name'])
 		.execute();
 
 const insertImageTags = async (imageId: number, tagIds: number[]) => {
@@ -177,7 +177,7 @@ const getImageTags = async (imageId: number) =>
 		.execute();
 
 const deleteOne = async (key: string) => {
-	await db.deleteFrom('image').where('image.name', '=', key).execute();
+	await db.deleteFrom('image').where('image.name', '=', key).executeTakeFirst();
 };
 
 const imageQueries = {

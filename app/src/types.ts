@@ -9,6 +9,30 @@ export interface Database {
 	image_tags: ImageTagsTable;
 	tag: TagTable;
 	image_tagging_job: ImageTaggingJobTable;
+	moodboard: MoodboardTable;
+	moodboard_item: MoodboardItemTable;
+}
+
+export interface MoodboardTable {
+	id: Generated<string>;
+	name: string;
+	revision: Generated<number>;
+	viewport_x: Generated<number>;
+	viewport_y: Generated<number>;
+	viewport_zoom: Generated<number>;
+	created_at: Generated<Date>;
+	updated_at: Generated<Date>;
+}
+
+export interface MoodboardItemTable {
+	id: string;
+	board_id: string;
+	image_id: number;
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+	z_index: number;
 }
 
 export interface ImageTable {
