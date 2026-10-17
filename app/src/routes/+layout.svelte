@@ -25,16 +25,18 @@
 				>
 					<li><a href={resolve('/')}>✏️ Croquis</a></li>
 					<li><a href={resolve('/gallery')}>🖼️ Gallery</a></li>
+					<li><a href={resolve('/moodboards')}>📌 Moodboards</a></li>
 					<li><a href={resolve('/tags')}>🏷️ Tags</a></li>
 					<li><a href={resolve('/upload')}>📂 Upload</a></li>
 				</ul>
 			</div>
-			<a href={resolve('/')} class="btn text-xl btn-ghost">Croquis Frontend</a>
+			<a href={resolve('/')} class="btn btn-ghost text-xl">Croquis Frontend</a>
 		</div>
 		<div class="navbar-center hidden lg:flex">
 			<ul class="menu menu-horizontal px-1">
 				<li><a href={resolve('/')}>✏️ Croquis</a></li>
 				<li><a href={resolve('/gallery')}>🖼️ Gallery</a></li>
+				<li><a href={resolve('/moodboards')}>📌 Moodboards</a></li>
 				<li><a href={resolve('/tags')}>🏷️ Tags</a></li>
 				<li><a href={resolve('/upload')}>📂 Upload</a></li>
 			</ul>

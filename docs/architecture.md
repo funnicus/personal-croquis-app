@@ -44,3 +44,30 @@ The durable application state is:
 The optional backup profile creates:
 
 - `dbdump`: transient logical SQL dump volume used by the backup service
+
+## Moodboards
+
+The `/moodboards` page lists named boards; `/moodboards/[id]` opens a Svelte Flow
+workspace. Images can be dragged from the library or uploaded by dropping files.
+The editor supports moving and resizing images, scroll zoom, background panning,
+and selection/removal. Board changes autosave after a short pause, with an explicit
+Save button and visible failure/retry state.
+
+Postgres stores board names, viewport position/zoom, and revision numbers in
+`moodboard`. `moodboard_item` stores each image placement's coordinates, dimensions,
+and stacking order, referencing the existing `image` table. The same library image
+can appear in several boards or several times in one board without copying its
+MinIO object. Deleting a board or removing a placement keeps library images;
+deleting a library image removes its placements through foreign-key cascades.
+
+`/api/moodboards` supports listing and creating boards. `/api/moodboards/[id]`
+supports loading, saving the full layout, and deleting a board. Saves run in a
+transaction and check the previous revision, returning HTTP 409 for stale saves
+instead of overwriting another tab's changes. The editor retains unsaved changes
+on failure and offers a reload of the saved version. Changes are saved before
+internal navigation; closing/reloading with unsaved changes prompts the browser's
+leave confirmation.
+
+The existing image upload endpoint also accepts `Accept: application/json`,
+returning image IDs/names and individual upload failures for placement on a board.
+Ordinary form uploads still redirect to the gallery.

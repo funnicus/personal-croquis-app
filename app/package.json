@@ -15,6 +15,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
+		"test:e2e": "playwright test",
 		"kysely-init": "kysely init",
 		"kysely-h": "kysely -h",
 		"migrate:make": "kysely migrate make",
@@ -27,6 +28,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
 		"@eslint/js": "^9.36.0",
+		"@playwright/test": "^1.64.1",
 		"@sveltejs/adapter-auto": "^6.1.0",
 		"@sveltejs/adapter-node": "^5.3.3",
 		"@sveltejs/kit": "^2.43.2",
@@ -52,6 +54,7 @@
 		"vite": "^7.1.7"
 	},
 	"dependencies": {
+		"@xyflow/svelte": "^1.7.0",
 		"daisyui": "^5.1.29",
 		"dotenv": "^17.2.3",
 		"http-status-codes": "^2.1.4",

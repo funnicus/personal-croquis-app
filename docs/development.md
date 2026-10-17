@@ -96,6 +96,28 @@ uvx --from ruff==0.15.17 ruff format --check .
 python3 -m compileall src
 ```
 
+## Moodboard Browser Tests
+
+Start Postgres and MinIO, configure the local app environment as above, and apply
+the migrations before running the browser tests:
+
+```bash
+cd app
+pnpm migrate:up
+pnpm exec playwright install chromium
+pnpm test:e2e
+```
+
+Playwright starts a local Vite server on port 5173, or reuses one already running.
+The tests create temporary boards and small reference images in the configured
+database and MinIO bucket, then delete their own records and files. Use development
+services for these tests. A preinstalled Chromium can be selected with
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`.
+
+The suite covers named-board management, image drops and library dragging,
+moving/resizing, zoom/pan persistence, removal, mobile uploads, input validation,
+transaction rollback, save retries, and conflicts between tabs.
+
 ## Docker Debug
 
 ```bash
